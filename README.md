@@ -72,11 +72,6 @@ powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File "ruta\al\script.ps1
 | `-Port` | Puerto COM del Arduino | COM14 |
 | `-BaudRate` | Velocidad serial | 9600 |
 
-**Ejemplo con otros parámetros:**
-
-```powershell
-.\keylogger_serial.ps1 -Port COM3 -BaudRate 115200
-```
 
 ## Detener el Script
 
