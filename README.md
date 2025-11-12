@@ -48,23 +48,12 @@ A       → 5V (con resistencia 220Ω)
 K       → GND
 ```
 
-### 3. Script PowerShell
-
-Guardar como `keylogger_serial.ps1`
-
 ## Uso
 
-### Modo Normal (ventana visible)
+### Ejecutar eso en tu PowerShell (Modo usuario)
 
-```powershell
-.\keylogger_serial.ps1 -Port COM14 -BaudRate 9600
-```
-
-### Modo Oculto (segundo plano)
-
-#### Desde CMD o Ejecutar (Win+R):
 ```cmd
-powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File "C:\ruta\completa\keylogger_serial.ps1" -Port COM14 -BaudRate 9600
+powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File "ruta\al\script.ps1" -Port COM14 -BaudRate 9600
 ```
 
 **Explicación del comando:**
@@ -75,23 +64,6 @@ powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File "C:\ruta\completa\k
 - `-Port COM14`: Puerto COM donde está el Arduino
 - `-BaudRate 9600`: Velocidad de comunicación (debe coincidir con Arduino)
 
-#### Archivo BAT (recomendado):
-
-Crear `ejecutar.bat`:
-```batch
-@echo off
-powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File "%~dp0keylogger_serial.ps1" -Port COM14 -BaudRate 9600
-```
-
-Doble clic en el `.bat` para ejecutar oculto.
-
-#### VBScript (100% invisible):
-
-Crear `ejecutar.vbs`:
-```vbscript
-CreateObject("Wscript.Shell").Run "powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File ""C:\ruta\keylogger_serial.ps1"" -Port COM14 -BaudRate 9600", 0, False
-```
-
 ## Parámetros
 
 | Parámetro | Descripción | Predeterminado |
@@ -100,21 +72,12 @@ CreateObject("Wscript.Shell").Run "powershell -WindowStyle Hidden -ExecutionPoli
 | `-BaudRate` | Velocidad serial | 9600 |
 
 **Ejemplo con otros parámetros:**
+
 ```powershell
 .\keylogger_serial.ps1 -Port COM3 -BaudRate 115200
 ```
 
 ## Detener el Script
-
-### Si está visible:
-Presionar **ESC**
-
-### Si está oculto:
-
-**Administrador de Tareas:**
-1. `Ctrl + Shift + Esc`
-2. Pestaña **Detalles**
-3. Buscar `powershell.exe` → Finalizar
 
 **PowerShell:**
 ```powershell
@@ -153,46 +116,6 @@ Get-Process powershell | Where-Object {$_.MainWindowTitle -eq ""} | Stop-Process
 3. **Scroll Automático**: Desplaza texto cada 500ms si excede 16 caracteres
 4. **Ventana Deslizante**: `procesarTexto()` extrae segmentos de 16 chars
 5. **Actualización LCD**: `actualizarPantalla()` refresca continuamente
-
-## Solución de Problemas
-
-### "No hay puertos serie detectados"
-- Conectar Arduino por USB
-- Verificar en **Administrador de Dispositivos → Puertos COM**
-- Instalar drivers CH340/FTDI si es necesario
-
-### "ERROR abrir puerto"
-- Cerrar Arduino IDE (Serial Monitor)
-- Verificar que no haya otras aplicaciones usando el puerto
-- Confirmar el número de puerto COM correcto
-
-### "Se requieren permisos de administrador"
-- Clic derecho en PowerShell → **Ejecutar como administrador**
-- O ejecutar el `.bat`/`.vbs` como administrador
-
-### LCD no muestra nada
-- Verificar conexiones del LCD
-- Ajustar contraste con el potenciómetro
-- Confirmar que el código Arduino esté cargado
-- Probar Serial Monitor (9600 baud) para ver datos
-
-## Notas de Seguridad
-
-- Uso educativo únicamente
-- Capturar teclas de otros sin consentimiento es ilegal
-- Algunos antivirus pueden detectarlo (falso positivo)
-- Usar solo en tu propia computadora
-
-## Estructura de Archivos
-
-```
-proyecto/
-│
-├── keylogger_serial.ps1    # Script PowerShell
-├── ejecutar.bat            # Launcher BAT (opcional)
-├── ejecutar.vbs            # Launcher VBS (opcional)
-└── arduino_lcd.ino         # Código Arduino
-```
 
 ## Licencia
 
