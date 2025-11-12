@@ -51,7 +51,7 @@ K       → GND
 
 ## Uso
 
-### Ejecutar eso en tu PowerShell (Modo usuario)
+### Ejecutar esto en tu PowerShell (Modo usuario)
 
 ```cmd
 powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File "ruta\al\script.ps1" -Port COM14 -BaudRate 9600
