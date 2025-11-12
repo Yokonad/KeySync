@@ -8,6 +8,7 @@ Script de PowerShell que captura teclas globalmente y las envía a un Arduino co
 - Arduino UNO/Nano/Mega
 - Pantalla LCD 16x2
 - Cable USB
+- Cable Jumper
 
 ### Software
 - Windows 10/11
@@ -120,7 +121,3 @@ Get-Process powershell | Where-Object {$_.MainWindowTitle -eq ""} | Stop-Process
 ## Licencia
 
 MIT License - Uso libre con atribución
-
----
-
-**Proyecto educativo Arduino + PowerShell**
